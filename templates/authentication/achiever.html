@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TCEWEB</title>
+
+    <!-- To add bootstrap 5 -->
+    <!-- FOR CS -->
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'dept/style2.css' %}">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
+<style>
+    @import "https://fonts.googleapis.com/css?family=Raleway:400,300,200,500,600,700";
+.fa-spin-fast {
+    -webkit-animation: fa-spin-fast 0.2s infinite linear;
+    animation: fa-spin-fast 0.2s infinite linear;
+}
+
+@-webkit-keyframes fa-spin-fast {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(359deg);
+        transform: rotate(359deg);
+    }
+}
+
+@keyframes fa-spin-fast {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(359deg);
+        transform: rotate(359deg);
+    }
+}
+
+body {
+    background-color: black !important;
+}
+
+.navbar {
+    background-color: black !important;
+    color: white !important;
+}
+
+.about {
+    background-image: url("{% static 'ach/achbg.png' %}");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    width: 100%;
+   
+}
+
+.head {
+    font-weight: 800;
+    font-size: 8vh;
+    font-family: cambria;
+    color: black;
+    text-shadow: 2px 2px rgb(211, 132, 4);
+}
+
+.head2 {
+    font-weight: small !important;
+    font-size: 5vh;
+    font-weight: 300;
+    font-family: cursive;
+    color: black;
+    text-shadow: 2px 2px rgb(253, 184, 73) !important;
+}
+
+.row {
+    background-color: white
+}
+
+.title {
+    padding: 2%;
+    font-family: serif;
+    color: rgba(210, 171, 42, 0.881);
+    background-color: black;
+    margin-bottom: 2%;
+}
+
+.material-card {
+    position: relative;
+    height: 0;
+    padding-bottom: calc(100% - 16px);
+    margin-bottom: 6.6em;
+}
+
+.material-card h2 {
+    position: absolute;
+    top: calc(100% - 16px);
+    left: 0;
+    width: 100%;
+    padding: 10px 16px;
+    color: #fff;
+    font-size: 1.4em;
+    line-height: 1.6em;
+    margin: 0;
+    z-index: 10;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    -ms-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
+}
+
+.material-card h2 span {
+    display: block;
+}
+
+.material-card h2 strong {
+    font-weight: 400;
+    display: block;
+    font-size: 0.8em;
+}
+
+.material-card h2:before,
+.material-card h2:after {
+    content: ' ';
+    position: absolute;
+    left: 0;
+    top: -16px;
+    width: 0;
+    border: 8px solid;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    -ms-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
+}
+
+.material-card h2:after {
+    top: auto;
+    bottom: 0;
+}
+
+@media screen and (max-width: 767px) {
+    .material-card.mc-active {
+        padding-bottom: 0;
+        height: auto;
+    }
+}
+
+.material-card.mc-active h2 {
+    top: 0;
+    padding: 10px 16px 10px 90px;
+}
+
+.material-card.mc-active h2:before {
+    top: 0;
+}
+
+.material-card.mc-active h2:after {
+    bottom: -16px;
+}
+
+.material-card .mc-content {
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 16px;
+    left: 16px;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    -ms-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
+}
+
+.material-card .mc-btn-action {
+    position: absolute;
+    right: 16px;
+    top: 15px;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    /*border: 3px solid rgb(87, 85, 85);*/
+    width: 60px;
+    height: 58px;
+    line-height: 44px;
+    text-align: center;
+    color: #fff;
+    cursor: pointer;
+    z-index: 20;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    -ms-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
+}
+
+.material-card.mc-active .mc-btn-action {
+    top: 62px;
+}
+
+.material-card .mc-description {
+    position: absolute;
+    top: 100%;
+    right: 30px;
+    left: 30px;
+    bottom: 54px;
+    overflow: hidden;
+    opacity: 0;
+    filter: alpha(opacity=0);
+    -webkit-transition: all 1.2s;
+    -moz-transition: all 1.2s;
+    -ms-transition: all 1.2s;
+    -o-transition: all 1.2s;
+    transition: all 1.2s;
+}
+
+.material-card .mc-footer {
+    height: 0;
+    overflow: hidden;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    -ms-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
+}
+
+.material-card .mc-footer h4 {
+    position: absolute;
+    top: 200px;
+    left: 30px;
+    padding: 0;
+    margin: 0;
+    font-size: 16px;
+    font-weight: 700;
+    -webkit-transition: all 1.4s;
+    -moz-transition: all 1.4s;
+    -ms-transition: all 1.4s;
+    -o-transition: all 1.4s;
+    transition: all 1.4s;
+}
+
+.material-card .mc-footer a {
+    display: block;
+    float: left;
+    position: relative;
+    width: 52px;
+    height: 52px;
+    margin-left: 5px;
+    margin-bottom: 15px;
+    font-size: 28px;
+    color: #fff;
+    line-height: 52px;
+    text-decoration: none;
+    top: 200px;
+}
+
+.material-card .mc-footer a:nth-child(1) {
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    -ms-transition: all 0.5s;
+    -o-transition: all 0.5s;
+    transition: all 0.5s;
+}
+
+.material-card .mc-footer a:nth-child(2) {
+    -webkit-transition: all 0.6s;
+    -moz-transition: all 0.6s;
+    -ms-transition: all 0.6s;
+    -o-transition: all 0.6s;
+    transition: all 0.6s;
+}
+
+.material-card .mc-footer a:nth-child(3) {
+    -webkit-transition: all 0.7s;
+    -moz-transition: all 0.7s;
+    -ms-transition: all 0.7s;
+    -o-transition: all 0.7s;
+    transition: all 0.7s;
+}
+
+.material-card .mc-footer a:nth-child(4) {
+    -webkit-transition: all 0.8s;
+    -moz-transition: all 0.8s;
+    -ms-transition: all 0.8s;
+    -o-transition: all 0.8s;
+    transition: all 0.8s;
+}
+
+.material-card .mc-footer a:nth-child(5) {
+    -webkit-transition: all 0.9s;
+    -moz-transition: all 0.9s;
+    -ms-transition: all 0.9s;
+    -o-transition: all 0.9s;
+    transition: all 0.9s;
+}
+
+.material-card .img-container {
+    overflow: hidden;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 3;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    -ms-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
+}
+
+.material-card.mc-active .img-container {
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    left: 0;
+    top: 12px;
+    width: 60px;
+    height: 60px;
+    z-index: 20;
+}
+
+.material-card.mc-active .mc-content {
+    padding-top: 5.6em;
+}
+
+@media screen and (max-width: 767px) {
+    .material-card.mc-active .mc-content {
+        position: relative;
+        margin-right: 16px;
+    }
+}
+
+.material-card.mc-active .mc-description {
+    top: 50px;
+    padding-top: 5.6em;
+    opacity: 1;
+    filter: alpha(opacity=100);
+}
+
+@media screen and (max-width: 767px) {
+    .material-card.mc-active .mc-description {
+        position: relative;
+        top: auto;
+        right: auto;
+        left: auto;
+        padding: 50px 30px 70px 30px;
+        bottom: 0;
+    }
+}
+
+.material-card.mc-active .mc-footer {
+    overflow: visible;
+    position: absolute;
+    top: calc(100% - 16px);
+    left: 16px;
+    right: 0;
+    height: 82px;
+    padding-top: 15px;
+    padding-left: 25px;
+}
+
+.material-card.mc-active .mc-footer a {
+    top: 0;
+}
+
+.material-card.mc-active .mc-footer h4 {
+    top: -32px;
+}
+
+.material-card.Indigo h2 {
+    background-color: #3F51B5;
+}
+
+.material-card.Indigo h2:after {
+    border-top-color: #3F51B5;
+    border-right-color: #3F51B5;
+    border-bottom-color: transparent;
+    border-left-color: transparent;
+}
+
+.material-card.Indigo h2:before {
+    border-top-color: transparent;
+    border-right-color: #1A237E;
+    border-bottom-color: #1A237E;
+    border-left-color: transparent;
+}
+
+.material-card.Indigo.mc-active h2:before {
+    border-top-color: transparent;
+    border-right-color: #3F51B5;
+    border-bottom-color: #3F51B5;
+    border-left-color: transparent;
+}
+
+.material-card.Indigo.mc-active h2:after {
+    border-top-color: #1A237E;
+    border-right-color: #1A237E;
+    border-bottom-color: transparent;
+    border-left-color: transparent;
+}
+
+.material-card.Indigo .mc-btn-action {
+    background-color: #3F51B5;
+}
+
+.material-card.Indigo .mc-btn-action:hover {
+    background-color: #1A237E;
+}
+
+.material-card.Indigo .mc-footer h4 {
+    color: #1A237E;
+}
+
+.material-card.Indigo .mc-footer a {
+    background-color: #1A237E;
+}
+
+.material-card.Indigo.mc-active .mc-content {
+    background-color: #E8EAF6;
+}
+
+.material-card.Indigo.mc-active .mc-footer {
+    background-color: #C5CAE9;
+}
+
+.material-card.Indigo.mc-active .mc-btn-action {
+    border-color: #E8EAF6;
+}
+
+.material-card.Blue h2 {
+    background-color: #2196F3;
+}
+
+.material-card.Blue h2:after {
+    border-top-color: #2196F3;
+    border-right-color: #2196F3;
+    border-bottom-color: transparent;
+    border-left-color: transparent;
+}
+
+.material-card.Blue h2:before {
+    border-top-color: transparent;
+    border-right-color: #0D47A1;
+    border-bottom-color: #0D47A1;
+    border-left-color: transparent;
+}
+
+.material-card.Blue.mc-active h2:before {
+    border-top-color: transparent;
+    border-right-color: #2196F3;
+    border-bottom-color: #2196F3;
+    border-left-color: transparent;
+}
+
+.material-card.Blue.mc-active h2:after {
+    border-top-color: #0D47A1;
+    border-right-color: #0D47A1;
+    border-bottom-color: transparent;
+    border-left-color: transparent;
+}
+
+.material-card.Blue .mc-btn-action {
+    background-color: #2196F3;
+}
+
+.material-card.Blue .mc-btn-action:hover {
+    background-color: #0D47A1;
+}
+
+.material-card.Blue .mc-footer h4 {
+    color: #0D47A1;
+}
+
+.material-card.Blue .mc-footer a {
+    background-color: #0D47A1;
+}
+
+.material-card.Blue.mc-active .mc-content {
+    background-color: #E3F2FD;
+}
+
+.material-card.Blue.mc-active .mc-footer {
+    background-color: #BBDEFB;
+}
+
+.material-card.Blue.mc-active .mc-btn-action {
+    border-color: #E3F2FD;
+}
+
+.material-card.Light-Blue h2 {
+    background-color: #03A9F4;
+}
+
+.material-card.Light-Blue h2:after {
+    border-top-color: #03A9F4;
+    border-right-color: #03A9F4;
+    border-bottom-color: transparent;
+    border-left-color: transparent;
+}
+
+.material-card.Light-Blue h2:before {
+    border-top-color: transparent;
+    border-right-color: #01579B;
+    border-bottom-color: #01579B;
+    border-left-color: transparent;
+}
+
+.material-card.Light-Blue.mc-active h2:before {
+    border-top-color: transparent;
+    border-right-color: #03A9F4;
+    border-bottom-color: #03A9F4;
+    border-left-color: transparent;
+}
+
+.material-card.Light-Blue.mc-active h2:after {
+    border-top-color: #01579B;
+    border-right-color: #01579B;
+    border-bottom-color: transparent;
+    border-left-color: transparent;
+}
+
+.material-card.Light-Blue .mc-btn-action {
+    background-color: #03A9F4;
+}
+
+.material-card.Light-Blue .mc-btn-action:hover {
+    background-color: #01579B;
+}
+
+.material-card.Light-Blue .mc-footer h4 {
+    color: #01579B;
+}
+
+.material-card.Light-Blue .mc-footer a {
+    background-color: #01579B;
+}
+
+.material-card.Light-Blue.mc-active .mc-content {
+    background-color: #E1F5FE;
+}
+
+.material-card.Light-Blue.mc-active .mc-footer {
+    background-color: #B3E5FC;
+}
+
+.material-card.Light-Blue.mc-active .mc-btn-action {
+    border-color: #E1F5FE;
+}
+
+body {
+    
+    color: #37474F;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 300;
+    font-size: 16px;
+}
+
+h1,
+h2,
+h3 {
+    font-weight: 200;
+}
+</style>
+
+
+</head>
+
+<body>
+    <!---Navbar-->
+    <nav class="navbar  navbar-expand-lg navbar-dark" id="navbar">
+        <div class="container-fluid">
+            <a class="navbar-brand " style="font-family:cursive;color:white;font-size:x-large" href="#">TCE WEB</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mx-auto mb-2 mb-lg-0 ">
+                    <li class="nav-item px-2">
+                        <a class="nav-link " style="font-family:cambria;font-size:larger;color:white;" href="{% url 'home' %}">Home</a>
+                    </li>
+                    <li class="nav-item px-2">
+                        <a class="nav-link " style="font-family:cambria;font-size:larger;color:white;" aria-current="page" href="{% url 'club' %}">Clubs</a>
+                    </li>
+                    <li class="nav-item dropdown px-2">
+                        <a class="nav-link dropdown-toggle" style="font-family:cambria;font-size:larger;color:white" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Departments
+        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            {% for name in names %}
+                            <li><a class="dropdown-item" style="font-family:calibri;font-size:larger;" href="{% url 'main' name.id %}">{{name.dept_name}}</a></li>
+                            {% endfor %}
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown px-2">
+                        <a class="nav-link dropdown-toggle" style="font-family:cambria;font-size:larger;color:white" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Achievers
+        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            {% for name in names %}
+                            <li><a class="dropdown-item" style="font-family:calibri;font-size:larger;" href="{% url 'ach' name.id %}">{{name.dept_name}}</a></li>
+                            {% endfor %}
+                        </ul>
+                    </li>
+                </ul>
+                
+                <form class="d-flex">
+                    <a href="{% url 'logout' %}">
+                    <button class="btn " style="color:white;border-color:white;font-family:cambria" type="submit">LOG OUT</button>
+                    </a>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+
+    <section class="container bg-dark ml-0 mr-0 width:" id="about" style="background-image:url('{% static 'ach/achbg.png'%}');">
+        <div class="page-header text-center p-5">
+            <h1 class="head">ACHIEVERS<br>
+                <small class="head2">Here are the achievers of the events conducted</small></h1>
+        </div>
+        {% for ac in ach_obj %}
+        <div class="row active-with-click m-3" style="overflow:auto">
+            <div class="title text-center">
+                <h2><i class="far  fa-star"></i>{{ac.dep_event_name}}</h2>
+            </div>
+            <div class="col-md-4 col-sm-6 col-xs-12">
+                <article class="material-card Indigo">
+                    <h2>
+                        <span>{{ac.first}}</span>
+                        <span>{{ac.first_dept}}</span>
+
+                    </h2>
+                    <div class="mc-content">
+                        <div class="img-container">
+                            <img class="img-responsive" src="{{ac.image1.url}}">
+                        </div>
+
+                    </div>
+                    <a class="mc-btn-action p-1" style="text-decoration:none">
+                        <span style="font-size:xx-large;font-weight:400">1<sup>st</sup></span>
+                    </a>
+
+                </article>
+            </div>
+
+            <div class="col-md-4 col-sm-6 col-xs-12">
+                <article class="material-card Blue">
+                    <h2>
+                        <span>{{ac.second}}</span>
+                        <span>{{ac.second_dept}}</span>
+
+                    </h2>
+                    <div class="mc-content">
+                        <div class="img-container">
+                            <img style="width:100%;height:100%;" class="img-responsive" src="{{ac.image2.url}}">
+                        </div>
+
+                    </div>
+                    <a class="mc-btn-action p-1  " style="text-decoration:none">
+                        <span style="font-size:xx-large;font-weight:400">2<sup>nd</sup></span>
+                    </a>
+
+                </article>
+            </div>
+
+            <div class="col-md-4 col-sm-6 col-xs-12">
+                <article class="material-card Light-Blue">
+                    <h2>
+                        <span>{{ac.third}}</span>
+                        <span>{{ac.third_dept}}</span>
+
+                    </h2>
+                    <div class="mc-content">
+                        <div class="img-container">
+                            <img class="img-responsive" src="{{ac.image3.url}}">
+                        </div>
+
+                    </div>
+                    <a class="mc-btn-action p-1" style="text-decoration:none">
+                        <span style="font-size:xx-large;font-weight:500">3<sup>rd</sup></span>
+                    </a>
+
+                </article>
+            </div>
+
+
+
+        </div>
+        <br>
+        {% endfor %}
+
+    </section>
+
+
+<!-- ======= Footer ======= -->
+<footer class="bg-dark text-center text-white" id="footer" style="background-color:rgba(0, 0, 0, 0.2);">
+    <!-- Grid container -->
+    <div class="container p-4 pb-0" style="height:30vh; style="background-color:rgba(0, 0, 0, 0.2);"">
+        <!-- Section: Social media -->
+        <section class="mb-4">
+            <!-- Facebook -->
+            <a class="btn btn-outline-light btn-floating m-1" href="https://www.facebook.com/TheOfficialTCEPage" role="button"><i class="fab fa-facebook-f"></i
+            ></a>
+
+            <!-- Twitter -->
+            <a class="btn btn-outline-light btn-floating m-1" href="https://twitter.com/tceofficialpage" role="button"><i class="fab fa-twitter"></i
+            ></a>
+
+            <!-- Google -->
+            <a class="btn btn-outline-light btn-floating m-1" href="https://www.tce.edu/" role="button"><i class="fab fa-google"></i
+            ></a>
+
+            <!-- Instagram -->
+            <a class="btn btn-outline-light btn-floating m-1" href="https://instagram.com/thiagarajar_college_of_engg?igshid=MDE2OWE1N2Q=" role="button"><i class="fab fa-instagram"></i
+            ></a>
+
+            <!-- Linkedin -->
+            <a class="btn btn-outline-light btn-floating m-1" href="https://www.linkedin.com/school/thiagarajar-college-of-engineering/" role="button"><i class="fab fa-linkedin-in"></i
+            ></a>
+        </section>
+        <!-- Section: Social media -->
+    </div>
+    <!-- Grid container -->
+
+    <!-- Copyright -->
+    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+        © 2020 Copyright:
+        <a class="text-white" href="https://www.tce.edu/">Thiagarajar College of Engineering </a>
+    </div>
+    <!-- Copyright -->
+</footer><!-- End Footer -->
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</body>
+
+</html>

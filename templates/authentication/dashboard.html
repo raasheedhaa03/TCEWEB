@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Dashboard</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons 
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">-->
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="{% static 'assets/vendor/animate.css/animate.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/aos/aos.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/boxicons/css/boxicons.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="{% static 'assets/style.css' %}" rel="stylesheet">
+</head>
+
+<body>
+
+  <!--NAVBAR-->
+  <!---Navbar-->
+  <nav class="navbar  navbar-expand-lg navbar-dark" id="navbar">
+    <div class="container-fluid">
+        <a class="navbar-brand " style="font-family:cursive;color:white;font-size:x-large" href="#">TCE WEB</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mx-auto mb-2 mb-lg-0 ">
+                <li class="nav-item px-2">
+                    <a class="nav-link " style="font-family:cambria;font-size:larger;color:white;" href="{% url 'home' %}">Home</a>
+                </li>
+                <li class="nav-item px-2">
+                    <a class="nav-link " style="font-family:cambria;font-size:larger;color:white;" aria-current="page" href="{% url 'club' %}">Clubs</a>
+                </li>
+                <li class="nav-item dropdown px-2">
+                    <a class="nav-link dropdown-toggle" style="font-family:cambria;font-size:larger;color:white" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+      Departments
+    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        {% for name in names %}
+                        <li><a class="dropdown-item" style="font-family:calibri;font-size:larger;" href="{% url 'main' name.id %}">{{name.dept_name}}</a></li>
+                        {% endfor %}
+                    </ul>
+                </li>
+                <li class="nav-item dropdown px-2">
+                    <a class="nav-link dropdown-toggle" style="font-family:cambria;font-size:larger;color:white" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+      Achievers
+    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        {% for name in names %}
+                        <li><a class="dropdown-item" style="font-family:calibri;font-size:larger;" href="{% url 'ach' name.id %}">{{name.dept_name}}</a></li>
+                        {% endfor %}
+                    </ul>
+                </li>
+            </ul>
+            
+            <form class="d-flex">
+                <a href="{% url 'logout' %}">
+                <button class="btn " style="color:white;border-color:white;font-family:cambria" type="submit">LOG OUT</button>
+                </a>
+            </form>
+        </div>
+    </div>
+</nav>
+
+
+  <!-- ======= Hero Section ======= -->
+  <section id="hero" class="d-flex align-items-center">
+    <div class="container position-relative text-center text-lg-start" data-aos="zoom-in" data-aos-delay="100">
+      <div class="row">
+        <div class="col-lg-8">
+          <h1><span>Know all the events in TCE</span></h1>
+          <h2>Explore! Take part! Achieve!</h2>
+        </div>
+      </div>
+    </div>
+  </section><!-- End Hero -->
+
+  <main id="main">
+
+    <!-- ======= About Section ======= -->
+    <section id="about" class="about">
+      <div class="container" data-aos="fade-up">
+
+        <div class="row">
+          <div class="col-lg-6 order-1 order-lg-2" data-aos="zoom-in" data-aos-delay="100">
+            <div class="about-img">
+              <img src="{% static 'assets/dashboard/tce1.jpg' %}" alt="">
+            </div>
+          </div>
+          <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content">
+            <h3>About TCE</h3>
+            <p class="d-flex justify-content-center align-items-center">
+              Founded in 1957 by philanthropist and industrialist Late Shri.Karumuttu Thiagarajan Chettiar, Thiagarajar College of Engineering (TCE) is a Government Aided Institution and affiliated to Anna University and situated in Madurai, the Temple
+                City. The college is funded by Central and State Governments and Management. The courses offered in TCE are approved by the All India Council for Technical Education (AICTE), New Delhi and Council of Architecture (COA), New Delhi. TCE was granted Autonomy in the year 1987 and the programmes have been accredited by the National Board of Accreditation (NBA). TCE offers 9 Undergraduate programmes, 10 Postgraduate programmes and Doctoral programmes in Engineering, Architecture
+                and Science.
+                <h4 class="title">Our Vision</h4>
+                <p class="desc">To provide world class quality technical education with strong ethical values.</p>
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </section><!-- End About Section -->
+
+     <!--Counts-->
+
+     <div class="container" data-aos="fade-up">
+      <div class="section-title">
+        <h2>Events</h2>
+        <p>TCE Events in Numbers</p>
+      </div>
+
+      <div class="row">
+
+          <div class="four col-md-3">
+              <div class="counter-box" style="width:5vh ;height: 5vh;">
+                  <i class="fa fa-building-o"></i>
+                  <span class="counter">8</span>
+                  <p>Departments</p>
+              </div>
+          </div>
+          <div class="four col-md-3">
+              <div class="counter-box">
+                  <i class="fa fa-group"></i>
+                  <span class="counter">12</span>
+                  <p>Clubs</p>
+              </div>
+          </div>
+          <div class="four col-md-3">
+              <div class="counter-box">
+                  <i class="fa fa-puzzle-piece"></i>
+                  <span class="counter">15</span>
+                  <p>Associations</p>
+              </div>
+          </div>
+          <div class="four col-md-3">
+              <div class="counter-box">
+                  <i class="fa  fa-user"></i>
+                  <span class="counter">250+</span>
+                  <p>Club Members</p>
+              </div>
+          </div>
+      </div>
+  </div><!--end counter-->
+
+
+
+
+    <!-- ======= Gallery Section ======= -->
+    <section id="gallery" class="gallery">
+
+      <div class="container" data-aos="fade-up">
+        <div class="section-title">
+          <h2>Gallery</h2>
+          <p>Events of TCE</p>
+        </div>
+      </div>
+
+      <div class="container-fluid" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="row g-0">
+
+          <div class="col-lg-3 col-md-4">
+            <div class="gallery-item">
+              <a href="./tce.jpg" class="gallery-lightbox" data-gall="gallery-item">
+                <img src="{% static 'assets/dashboard/tce.jpg' %}" alt="" class="img-fluid">
+              </a>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-4">
+            <div class="gallery-item">
+              <a href="./varna1.jpg" class="gallery-lightbox" data-gall="gallery-item">
+                <img src="{% static 'assets/dashboard/varna1.jpg' %}" alt="" class="img-fluid">
+              </a>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-4">
+            <div class="gallery-item">
+              <a href="./varna2.jpg" class="gallery-lightbox" data-gall="gallery-item">
+                <img src="{% static 'assets/dashboard/varna2.jpg' %}" alt="" class="img-fluid">
+              </a>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-4">
+            <div class="gallery-item">
+              <a href="./event1.jpg" class="gallery-lightbox" data-gall="gallery-item">
+                <img src="{% static 'assets/dashboard/event1.jpg' %}" alt="" class="img-fluid">
+              </a>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-4">
+            <div class="gallery-item">
+              <a href="./event2.jpg" class="gallery-lightbox" data-gall="gallery-item">
+                <img src="{% static 'assets/dashboard/event2.jpg' %}" alt="" class="img-fluid">
+              </a>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-4">
+            <div class="gallery-item">
+              <a href="./event3.jpg" class="gallery-lightbox" data-gall="gallery-item">
+                <img src="{% static 'assets/dashboard/event3.jpg' %}" alt="" class="img-fluid">
+              </a>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-4">
+            <div class="gallery-item">
+              <a href="./event4.jpg" class="gallery-lightbox" data-gall="gallery-item">
+                <img src="{% static 'assets/dashboard/event4.jpg' %}" alt="" class="img-fluid">
+              </a>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-4">
+            <div class="gallery-item">
+              <a href="./event5.jpg" class="gallery-lightbox" data-gall="gallery-item">
+                <img src="{% static 'assets/dashboard/event5.jpg' %}" alt="" class="img-fluid">
+              </a>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section><!-- End Gallery Section -->
+
+   
+
+    
+
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <footer class="bg-dark text-center text-white" id="footer">
+    <!-- Grid container -->
+    <div class="container p-4 pb-0" style="height:30vh;">
+        <!-- Section: Social media -->
+        <section class="mb-4">
+            <!-- Facebook -->
+            <a class="btn btn-outline-light btn-floating m-1" href="https://www.facebook.com/TheOfficialTCEPage" role="button"><i class="fab fa-facebook-f"></i
+            ></a>
+
+            <!-- Twitter -->
+            <a class="btn btn-outline-light btn-floating m-1" href="https://twitter.com/tceofficialpage" role="button"><i class="fab fa-twitter"></i
+            ></a>
+
+            <!-- Google -->
+            <a class="btn btn-outline-light btn-floating m-1" href="https://www.tce.edu/" role="button"><i class="fab fa-google"></i
+            ></a>
+
+            <!-- Instagram -->
+            <a class="btn btn-outline-light btn-floating m-1" href="https://instagram.com/thiagarajar_college_of_engg?igshid=MDE2OWE1N2Q=" role="button"><i class="fab fa-instagram"></i
+            ></a>
+
+            <!-- Linkedin -->
+            <a class="btn btn-outline-light btn-floating m-1" href="https://www.linkedin.com/school/thiagarajar-college-of-engineering/" role="button"><i class="fab fa-linkedin-in"></i
+            ></a>
+        </section>
+        <!-- Section: Social media -->
+    </div>
+    <!-- Grid container -->
+
+    <!-- Copyright -->
+    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+        © 2020 Copyright:
+        <a class="text-white" href="https://www.tce.edu/">Thiagarajar College of Engineering </a>
+    </div>
+    <!-- Copyright -->
+</footer><!-- End Footer -->
+
+  <div id="preloader"></div>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="{% static 'assets/vendor/aos/aos.js' %}"></script>
+  <script src="{% static 'assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/glightbox/js/glightbox.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/isotope-layout/isotope.pkgd.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/swiper/swiper-bundle.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/php-email-form/validate.js' %}"></script>
+
+  <!-- Template Main JS File -->
+  <script src="{% static 'assets/js/main.js' %}"></script>
+
+</body>
+
+</html>
