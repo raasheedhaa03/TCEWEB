@@ -588,8 +588,7 @@ h3 {
                         <a class="nav-link " style="font-family:cambria;font-size:larger;color:white;" aria-current="page" href="{% url 'club' %}">Clubs</a>
                     </li>
                     <li class="nav-item dropdown px-2">
-                        <a class="nav-link dropdown-toggle" style="font-family:cambria;font-size:larger;color:white" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-          Departments
+                        <a class="nav-link dropdown-toggle" style="font-family:cambria;font-size:larger;color:white" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Departments
         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             {% for name in names %}
@@ -598,8 +597,7 @@ h3 {
                         </ul>
                     </li>
                     <li class="nav-item dropdown px-2">
-                        <a class="nav-link dropdown-toggle" style="font-family:cambria;font-size:larger;color:white" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-          Achievers
+                        <a class="nav-link dropdown-toggle" style="font-family:cambria;font-size:larger;color:white" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Achievers
         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             {% for name in names %}
@@ -607,8 +605,11 @@ h3 {
                             {% endfor %}
                         </ul>
                     </li>
-                </ul>
                 
+                <li class="nav-item px-2">
+                    <a class="nav-link " style="font-family:cambria;font-size:larger;color:white;" href="#footer">Contact Us</a>
+                </li>
+            </ul>
                 <form class="d-flex">
                     <a href="{% url 'logout' %}">
                     <button class="btn " style="color:white;border-color:white;font-family:cambria" type="submit">LOG OUT</button>

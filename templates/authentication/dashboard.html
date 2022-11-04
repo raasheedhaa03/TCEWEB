@@ -61,16 +61,9 @@
                         {% endfor %}
                     </ul>
                 </li>
-                <li class="nav-item dropdown px-2">
-                    <a class="nav-link dropdown-toggle" style="font-family:cambria;font-size:larger;color:white" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-      Achievers
-    </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        {% for name in names %}
-                        <li><a class="dropdown-item" style="font-family:calibri;font-size:larger;" href="{% url 'ach' name.id %}">{{name.dept_name}}</a></li>
-                        {% endfor %}
-                    </ul>
-                </li>
+                <li class="nav-item px-2">
+                  <a class="nav-link " style="font-family:cambria;font-size:larger;color:white;" href="#footer">Contact Us</a>
+              </li>
             </ul>
             
             <form class="d-flex">
