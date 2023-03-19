@@ -215,7 +215,7 @@ KismetCaptureBtGeiger==2021.7.1
 KismetCaptureFreaklabsZigbee==2018.7.0
 KismetCaptureRtl433==2020.10.1
 KismetCaptureRtladsb==2020.10.1
-KismetCaptureRtlamr==2020.10.1
+
 kiwisolver==1.3.2
 ldap3==2.9.1
 ldapdomaindump==0.9.3
